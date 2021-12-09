@@ -1,11 +1,19 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Button, Text, TextInput, View } from 'react-native';
 import styles from './styles';
 
 const StartGameScreen = () => {
     return (
         <View style={styles.screen}>
-            <Text> Start Game Screen </Text>
+            <Text style={styles.title}>Start a New Game!</Text>
+            <View style={styles.inputContainer}>
+                <Text>Select a Number</Text>
+                <TextInput />
+                <View style={styles.buttonContainer}>
+                    <Button title="Reset"/>
+                    <Button title="Confirm"/>
+                </View>
+            </View>
         </View>
     );
 }
