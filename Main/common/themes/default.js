@@ -1,8 +1,12 @@
 import swatches from "./swatches";
 
+export const primaryColor = swatches.violetRed;
+export const accentColor = swatches.electricViolet;
+
 const defaultTheme = {
     default: {
-        primary: swatches.violetRed,
+        accent: accentColor,
+        primary: primaryColor,
         screen: {
             padding: 10,
         },
@@ -12,7 +16,13 @@ const defaultTheme = {
         },
         button: {
             width: 100,
-            backgroundColor: swatches.violetRed,
+            backgroundColor: primaryColor,
+        },
+        input: {
+            borderColor: swatches.grey,
+            borderBottomWidth: 1,
+            height: 30,
+            marginVertical: 10,
         }
     },
     card: {
@@ -33,7 +43,7 @@ const defaultTheme = {
     },
     header: {
         color: {
-            background: swatches.violetRed,
+            background: primaryColor,
             text: swatches.black,
         },
         size: {
@@ -42,6 +52,12 @@ const defaultTheme = {
             paddingTop: 36,
         }
     },
+    numberInput: {
+        size: {
+            width: 30,
+            font: 30,
+        },
+    }
 }
 
 export default defaultTheme;

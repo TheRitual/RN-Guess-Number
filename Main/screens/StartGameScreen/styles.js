@@ -23,9 +23,18 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
     },
     button: {
-        width: theme.default.button.width,
         backgroundColor: theme.default.button.backgroundColor,
-    }
+        width: theme.default.button.width,
+    },
+    accentButton: {
+        backgroundColor: theme.default.accent,
+        width: theme.default.button.width,
+    },
+    input: {
+        textAlign: 'center',
+        width: theme.numberInput.size.width,
+        fontSize: theme.numberInput.size.font,
+    },
 });
 
 export default styles;
