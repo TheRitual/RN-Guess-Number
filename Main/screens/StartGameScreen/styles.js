@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'space-between',
         paddingHorizontal: 15,
+    },
+    button: {
+        width: 100,
     }
 });
 
