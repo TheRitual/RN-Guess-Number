@@ -1,23 +1,20 @@
 import { StyleSheet } from "react-native";
+import theme from "../../common/themes/default";
 
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        padding: 10,
+        padding: theme.default.screen.padding,
         alignItems: 'center',
     },
     title: {
-        fontSize: 20,
-        marginVertical: 10,
+        fontSize: theme.default.title.size,
+        marginVertical: theme.default.title.marginVertical,
     },
     inputContainer: {
         width: 300,
         maxWidth: '80%',
         alignItems: 'center',
-        elevation: 20,
-        backgroundColor: '#fff',
-        padding: 20,
-        borderRadius: 20,
     },
     buttonContainer: {
         flexDirection: "row",
@@ -26,7 +23,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
     },
     button: {
-        width: 100,
+        width: theme.default.button.width,
+        backgroundColor: theme.default.button.backgroundColor,
     }
 });
 

@@ -4,13 +4,13 @@ import theme from "../common/themes/default";
 const styles = StyleSheet.create({
     header: {
         width: '100%',
-        height: theme.size.header.height,
-        paddingTop: theme.size.header.padding,
-        backgroundColor: theme.color.header.background,
+        height: theme.header.size.height,
+        paddingTop: theme.header.size.paddingTop,
+        backgroundColor: theme.header.color.background,
     },
     headerTitle: {
-        color: theme.color.header.text,
-        fontSize: theme.size.header.font,
+        color: theme.header.color.text,
+        fontSize: theme.header.size.font,
         textAlign: 'center',
     },
 });
