@@ -10,7 +10,7 @@ const CustomButton = props => {
             <Button
                 {...props}
                 color={color}
-                title={props.title || "?"}
+                title={props.title || props.children || "?"}
             />
         </View>
     );

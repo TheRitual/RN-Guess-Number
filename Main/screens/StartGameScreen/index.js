@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Keyboard, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Alert, Keyboard, Text, TouchableWithoutFeedback, View } from 'react-native';
 import Card from '../../common/components/Card';
 import CustomButton from '../../common/components/CustomButton';
 import Input from '../../common/components/Input';
@@ -7,9 +7,31 @@ import styles from './styles';
 
 const StartGameScreen = () => {
     const [enteredValue, setEnteredValue] = useState(null);
+    const [selectedNumber, setSelectedNumber] = useState(null);
+    const [confirmed, setConfirmed] = useState(false);
 
     const numberInputHandler = val => {
         setEnteredValue(val.replace(/[^0-9]/g, ""));
+    }
+
+    const resetInputHandler = () => {
+        setEnteredValue("");
+        setConfirmed(true);
+    }
+
+    const confirmInputHandler = () => {
+        const selected = parseInt(enteredValue);
+        if (isNaN(selected) || selected < 0 || selected > 99) {
+            Alert.alert(
+                "Invalid Number!",
+                "Number has to be a number between 0 and 99",
+                [{ text: "Okay!", style: 'destructive', onPress: resetInputHandler }]
+            );
+            return;
+        }
+        setConfirmed(true);
+        setSelectedNumber(selected);
+        setEnteredValue("");
     }
 
     return (
@@ -29,10 +51,17 @@ const StartGameScreen = () => {
                         value={enteredValue}
                     />
                     <View style={styles.buttonContainer}>
-                        <CustomButton style={styles.accentButton} title="Reset" />
-                        <CustomButton style={styles.button} title="Confirm" />
+                        <CustomButton onPress={resetInputHandler} style={styles.accentButton} title="Reset" />
+                        <CustomButton onPress={confirmInputHandler} style={styles.button} title="Confirm" />
                     </View>
                 </Card>
+                {confirmed &&
+                    <Card style={styles.selectedNumberCard}>
+                        <Text>You Selected:</Text>
+                        <Text>{selectedNumber}</Text>
+                        <CustomButton>Start Game!</CustomButton>
+                    </Card>
+                }
             </View>
         </TouchableWithoutFeedback>
     );

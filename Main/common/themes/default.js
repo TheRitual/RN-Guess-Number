@@ -57,6 +57,11 @@ const defaultTheme = {
             width: 60,
             font: 30,
         },
+    },
+    selectedNumber: {
+        size: {
+            marginTop: 20,
+        }
     }
 }
 

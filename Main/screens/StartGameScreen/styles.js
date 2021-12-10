@@ -35,6 +35,10 @@ const styles = StyleSheet.create({
         width: theme.numberInput.size.width,
         fontSize: theme.numberInput.size.font,
     },
+    selectedNumberCard: {
+        marginTop: theme.selectedNumber.size.marginTop,
+        textAlign: 'center',
+    }
 });
 
 export default styles;
