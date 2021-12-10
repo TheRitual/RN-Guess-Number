@@ -6,8 +6,9 @@ const CustomButton = props => {
     const color = props.style ? props.style.backgroundColor || theme.default.primary : theme.default.primary;
 
     return (
-        <View style={props.style}>
+        <View {...props}>
             <Button
+                {...props}
                 color={color}
                 title={props.title || "?"}
             />

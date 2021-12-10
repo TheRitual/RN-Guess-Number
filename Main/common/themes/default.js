@@ -54,7 +54,7 @@ const defaultTheme = {
     },
     numberInput: {
         size: {
-            width: 30,
+            width: 60,
             font: 30,
         },
     }

@@ -4,9 +4,7 @@ import styles from './styles';
 
 const Input = props => {
     return <TextInput
-        autoFocus={props.autoFocus}
-        caretHidden={props.caretHidden}
-        keyboardType={props.keyboardType}
+        {...props}
         style={{ ...styles.input, ...props.style }}
     />
 }
