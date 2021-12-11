@@ -6,7 +6,7 @@ import Input from '../../common/components/Input';
 import NumberContainer from '../../common/components/NumberContainer';
 import styles from './styles';
 
-const StartGameScreen = () => {
+const StartGameScreen = ({ onStartGame }) => {
     const [enteredValue, setEnteredValue] = useState(null);
     const [selectedNumber, setSelectedNumber] = useState(null);
     const [confirmed, setConfirmed] = useState(false);
@@ -36,6 +36,10 @@ const StartGameScreen = () => {
         Keyboard.dismiss();
     }
 
+    const startGame = () => {
+        onStartGame(selectedNumber);
+    }
+
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.screen}>
@@ -61,7 +65,7 @@ const StartGameScreen = () => {
                     <Card style={styles.selectedNumberCard}>
                         <Text>You Selected:</Text>
                         <NumberContainer>{selectedNumber}</NumberContainer>
-                        <CustomButton>Start Game!</CustomButton>
+                        <CustomButton onPress={startGame}>Start Game!</CustomButton>
                     </Card>
                 }
             </View>

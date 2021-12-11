@@ -81,7 +81,13 @@ const defaultTheme = {
             marginVertical: 10,
             padding: 10,
         },
-    }
+    },
+    gameScreen: {
+        size: {
+            padding: 10,
+            marginTop: 100,
+        },
+    },
 }
 
 export default defaultTheme;
