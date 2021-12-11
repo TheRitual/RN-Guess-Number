@@ -162,16 +162,15 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
 
             <View style={styles.guessCardsContainer}>
                 <Card style={styles.playerNameCard}>
-                    <Text style={styles.playerName}>
-                        YOU
-                        {getGameStatus() !== GAME_STATUS.ON_GOING && ` (${computersNumber})`}
-                    </Text>
+                    <Text style={styles.playerName}>YOU</Text>
+                    <Text style={styles.playerName}>({getGameStatus() !== GAME_STATUS.ON_GOING ? computersNumber : '???'})</Text>
+
                 </Card>
                 <Card style={styles.playerNameCard}>
-                    <Text style={styles.playerName}>
-                        COMPUTER
-                        ({playersNumber})
-                    </Text>
+                    <Text style={styles.playerName}>COMPUTER</Text>
+                    <Text style={styles.playerName}>({playersNumber})</Text>
+
+
                 </Card>
             </View>
 

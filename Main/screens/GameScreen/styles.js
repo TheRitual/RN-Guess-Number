@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     roundText: {
         fontSize: theme.gameScreen.roundText.size.font,
         color: theme.gameScreen.roundText.color.text,
-        fontWeight: "700",
         margin: theme.gameScreen.roundText.size.margin,
+        fontFamily: 'permanent-marker',
     },
     guessCardsContainer: {
         flexDirection: "row",
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     info: {
+        fontFamily: 'permanent-marker',
         fontSize: theme.info.size.font,
         textAlign: 'center',
     },
@@ -61,7 +62,8 @@ const styles = StyleSheet.create({
     playerName: {
         fontSize: theme.gameScreen.playerName.size.font,
         color: theme.gameScreen.playerName.color.text,
-        fontWeight: '700',
+        fontFamily: 'fredoka',
+        textAlign: 'center',
     },
     nextRoundCard: {
         margin: theme.gameScreen.nextRoundButton.size.margin,
@@ -78,6 +80,7 @@ const styles = StyleSheet.create({
     winner: {
         fontSize: theme.gameScreen.winner.sizes.font,
         color: theme.gameScreen.winner.color.text,
+        fontFamily: 'gloria',
     },
     winnerCard: {
         marginTop: theme.gameScreen.winner.sizes.marginTop,

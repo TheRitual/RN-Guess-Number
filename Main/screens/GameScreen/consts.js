@@ -6,7 +6,7 @@ export const GUESS_STATUS = {
 }
 
 export const GAME_STATUS = {
-    PLAYER_WON: "Player Won!",
+    PLAYER_WON: "You Won!",
     COMPUTER_WON: "Computer Won!",
     DRAW: "It is Draw!",
     ON_GOING: "ONGOING",

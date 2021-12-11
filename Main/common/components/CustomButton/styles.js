@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
       text: {
         fontSize: 16,
         lineHeight: 21,
-        fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
+        fontFamily: 'fredoka',
       },
 });
 

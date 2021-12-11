@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     number: {
         color: theme.numberInput.color.number,
         fontSize: theme.numberInput.size.font,
+        fontFamily: 'gloria',
     }
 });
 

@@ -1,14 +1,16 @@
 import React from 'react';
-import { Text, Pressable } from 'react-native'
+import { Text, View, TouchableHighlight } from 'react-native'
 import styles from './styles';
 
 const CustomButton = props => {
     return (
-        <Pressable style={{ ...styles.button, ...props.style }}>
-            <Text {...props} style={{ ...styles.text, ...props.textStyle }} >
-                {props.title || props.children || "?"}
-            </Text>
-        </Pressable>
+        <TouchableHighlight>
+            <View style={{ ...styles.button, ...props.style }}>
+                <Text {...props} style={{ ...styles.text, ...props.textStyle }} >
+                    {props.title || props.children || "?"}
+                </Text>
+            </View>
+        </TouchableHighlight>
     );
 }
 

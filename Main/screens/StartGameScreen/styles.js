@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     title: {
+        fontFamily: 'permanent-marker',
         fontSize: theme.default.title.size,
         marginVertical: theme.default.title.marginVertical,
     },
@@ -42,7 +43,11 @@ const styles = StyleSheet.create({
     startGameButton: {
         backgroundColor: theme.startGameButton.color.background,
     },
+    startGameButtonText: {
+        fontFamily: 'fredoka',
+    },
     info: {
+        fontFamily: 'permanent-marker',
         fontSize: theme.info.size.font,
         textAlign: 'center',
     },

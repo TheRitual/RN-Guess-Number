@@ -65,7 +65,7 @@ const StartGameScreen = ({ onStartGame }) => {
                     <Card style={styles.selectedNumberCard}>
                         <Text style={styles.info}>You Selected:</Text>
                         <NumberContainer>{selectedNumber}</NumberContainer>
-                        <CustomButton style={styles.startGameButton} onPress={startGame}>Start Game!</CustomButton>
+                        <CustomButton style={styles.startGameButton} textStyle={styles.startGameButtonText} onPress={startGame}>Start Game!</CustomButton>
                     </Card>
                 }
             </View>

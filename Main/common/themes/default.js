@@ -11,7 +11,7 @@ const defaultTheme = {
             padding: 10,
         },
         title: {
-            size: 20,
+            size: 25,
             marginVertical: 20,
         },
         button: {
@@ -21,13 +21,13 @@ const defaultTheme = {
         input: {
             borderColor: swatches.grey,
             borderBottomWidth: 1,
-            height: 30,
+            height: 40,
             marginVertical: 10,
         }
     },
     info: {
         size: {
-            font: 17,
+            font: 20,
         }
     },
     card: {
@@ -82,7 +82,7 @@ const defaultTheme = {
                 radius: 50,
                 width: 2,
             },
-            font: 25,
+            font: 20,
             marginVertical: 10,
             padding: 15,
             size: 70,
@@ -122,11 +122,11 @@ const defaultTheme = {
         },
         roundText: {
             color: {
-                text: primaryColor,
+                text: accentColor,
             },
             size: {
-                font: 30,
-                margin: 20,
+                font: 35,
+                margin: 10,
             },
         },
         playerName: {

@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         color: theme.header.color.text,
         fontSize: theme.header.size.font,
         textAlign: 'center',
+        fontFamily: 'permanent-marker',
     },
 });
 
