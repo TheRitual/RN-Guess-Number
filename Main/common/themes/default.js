@@ -25,6 +25,11 @@ const defaultTheme = {
             marginVertical: 10,
         }
     },
+    info: {
+        size: {
+            font: 17,
+        }
+    },
     card: {
         color: {
             background: swatches.white,
@@ -82,11 +87,63 @@ const defaultTheme = {
             padding: 10,
         },
     },
+    startGameButton: {
+        color: {
+            background: primaryColor,
+        }
+    },
     gameScreen: {
         size: {
             padding: 10,
-            marginTop: 100,
+            marginTop: 10,
         },
+        guess: {
+            size: {
+                margin: 20,
+            },
+            input: {
+                size: {
+                    width: 50,
+                    fontSize: 30,
+                    height: 50,
+                },
+            },
+            button: {
+                color: {
+                    background: primaryColor,
+                },
+                size: {
+                    marginTop: 20,
+                }
+            }
+        },
+        roundText: {
+            color: {
+                text: primaryColor,
+            },
+            size: {
+                font: 30,
+                margin: 20,
+            },
+        },
+        playerName: {
+            size: {
+                font: 17,
+            },
+            color: {
+                text: primaryColor,
+            }
+        },
+        nextRoundButton: {
+            color: {
+                background: accentColor,
+            },
+            size: {
+                margin: 20,
+                font: 30,
+                padding: 20,
+            }
+        }
     },
 }
 

@@ -17,7 +17,7 @@ const Main = () => {
     }
 
     const content = userNumber ?
-        <GameScreen userNumber={userNumber} onStopGame={stopGameHandler} />
+        <GameScreen playersNumber={userNumber} onStopGame={stopGameHandler} />
         :
         <StartGameScreen onStartGame={startGameHandler} />;
 

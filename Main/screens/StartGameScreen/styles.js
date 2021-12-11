@@ -38,7 +38,14 @@ const styles = StyleSheet.create({
     selectedNumberCard: {
         marginTop: theme.selectedNumber.size.marginTop,
         alignItems: 'center',
-    }
+    },
+    startGameButton: {
+        backgroundColor: theme.startGameButton.color.background,
+    },
+    info: {
+        fontSize: theme.info.size.font,
+        textAlign: 'center',
+    },
 });
 
 export default styles;

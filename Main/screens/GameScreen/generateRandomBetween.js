@@ -1,7 +1,7 @@
 const generateRandomBetween = (minimum, maximum) => {
     const min = Math.ceil(minimum);
     const max = Math.ceil(maximum);
-    const random = Math.floor(Math.random() * (max - min) + min);
+    const random = Math.round(Math.random() * (max - min) + min);
     return random;
 }
 

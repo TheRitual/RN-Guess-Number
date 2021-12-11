@@ -45,7 +45,7 @@ const StartGameScreen = ({ onStartGame }) => {
             <View style={styles.screen}>
                 <Text style={styles.title}>Start a New Game!</Text>
                 <Card style={styles.inputContainer}>
-                    <Text>Select a Number</Text>
+                    <Text style={styles.info}>Select a Number</Text>
                     <Input
                         autoFocus
                         caretHidden
@@ -63,9 +63,9 @@ const StartGameScreen = ({ onStartGame }) => {
                 </Card>
                 {confirmed &&
                     <Card style={styles.selectedNumberCard}>
-                        <Text>You Selected:</Text>
+                        <Text style={styles.info}>You Selected:</Text>
                         <NumberContainer>{selectedNumber}</NumberContainer>
-                        <CustomButton onPress={startGame}>Start Game!</CustomButton>
+                        <CustomButton style={styles.startGameButton} onPress={startGame}>Start Game!</CustomButton>
                     </Card>
                 }
             </View>

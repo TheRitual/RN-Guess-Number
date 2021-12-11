@@ -1,18 +1,14 @@
 import React from 'react';
-import { View, Button } from 'react-native';
-import theme from '../../themes/default';
+import { Text, Pressable } from 'react-native'
+import styles from './styles';
 
 const CustomButton = props => {
-    const color = props.style ? props.style.backgroundColor || theme.default.primary : theme.default.primary;
-
     return (
-        <View {...props}>
-            <Button
-                {...props}
-                color={color}
-                title={props.title || props.children || "?"}
-            />
-        </View>
+        <Pressable style={{ ...styles.button, ...props.style }}>
+            <Text {...props} style={{ ...styles.text, ...props.textStyle }} >
+                {props.title || props.children || "?"}
+            </Text>
+        </Pressable>
     );
 }
 
