@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
     selectedNumberCard: {
         marginTop: theme.selectedNumber.size.marginTop,
-        textAlign: 'center',
+        alignItems: 'center',
     }
 });
 

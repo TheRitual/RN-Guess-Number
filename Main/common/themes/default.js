@@ -62,6 +62,25 @@ const defaultTheme = {
         size: {
             marginTop: 20,
         }
+    },
+    numberInput: {
+        color: {
+            border: accentColor,
+            number: accentColor,
+        },
+        params: {
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+        size: {
+            border: {
+                radius: 10,
+                width: 2,
+            },
+            font: 25,
+            marginVertical: 10,
+            padding: 10,
+        },
     }
 }
 

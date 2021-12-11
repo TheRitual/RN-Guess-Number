@@ -3,6 +3,7 @@ import { Alert, Keyboard, Text, TouchableWithoutFeedback, View } from 'react-nat
 import Card from '../../common/components/Card';
 import CustomButton from '../../common/components/CustomButton';
 import Input from '../../common/components/Input';
+import NumberContainer from '../../common/components/NumberContainer';
 import styles from './styles';
 
 const StartGameScreen = () => {
@@ -16,7 +17,7 @@ const StartGameScreen = () => {
 
     const resetInputHandler = () => {
         setEnteredValue("");
-        setConfirmed(true);
+        setConfirmed(false);
     }
 
     const confirmInputHandler = () => {
@@ -32,6 +33,7 @@ const StartGameScreen = () => {
         setConfirmed(true);
         setSelectedNumber(selected);
         setEnteredValue("");
+        Keyboard.dismiss();
     }
 
     return (
@@ -58,7 +60,7 @@ const StartGameScreen = () => {
                 {confirmed &&
                     <Card style={styles.selectedNumberCard}>
                         <Text>You Selected:</Text>
-                        <Text>{selectedNumber}</Text>
+                        <NumberContainer>{selectedNumber}</NumberContainer>
                         <CustomButton>Start Game!</CustomButton>
                     </Card>
                 }
