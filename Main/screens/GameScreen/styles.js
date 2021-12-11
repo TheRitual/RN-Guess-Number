@@ -36,9 +36,9 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
     },
     guessCard: {
-        width: '45%',
+        width: theme.gameScreen.guessCard.size.width,
+        margin: theme.gameScreen.guessCard.size.margin,
         alignItems: 'center',
-        margin: '2%',
     },
     info: {
         fontSize: theme.info.size.font,
@@ -46,6 +46,12 @@ const styles = StyleSheet.create({
     },
     tip: {
         fontSize: 20,
+    },
+    playerNameCard: {
+        width: theme.gameScreen.guessCard.size.width,
+        margin: theme.gameScreen.guessCard.size.margin,
+        alignItems: 'center',
+        backgroundColor: theme.gameScreen.playerName.color.background,
     },
     playerName: {
         fontSize: theme.gameScreen.playerName.size.font,
@@ -63,7 +69,27 @@ const styles = StyleSheet.create({
     nextRoundButtonText: {
         fontSize: theme.gameScreen.nextRoundButton.size.font,
         paddingTop: theme.gameScreen.nextRoundButton.size.font / 2,
-    }
+    },
+    winner: {
+        fontSize: theme.gameScreen.winner.sizes.font,
+        color: theme.gameScreen.winner.color.text,
+    },
+    winnerCard: {
+        marginTop: theme.gameScreen.winner.sizes.marginTop,
+        backgroundColor: theme.gameScreen.winner.color.background,
+    },
+    correctCard: {
+        width: theme.gameScreen.guessCard.size.width,
+        margin: theme.gameScreen.guessCard.size.margin,
+        alignItems: 'center',
+        backgroundColor: theme.gameScreen.infoCard.color.correct,
+    },
+    wrongCard: {
+        width: theme.gameScreen.guessCard.size.width,
+        margin: theme.gameScreen.guessCard.size.margin,
+        alignItems: 'center',
+        backgroundColor: theme.gameScreen.infoCard.color.wrong,
+    },
 });
 
 export default styles;

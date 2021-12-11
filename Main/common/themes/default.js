@@ -131,7 +131,8 @@ const defaultTheme = {
                 font: 17,
             },
             color: {
-                text: primaryColor,
+                text: swatches.white,
+                background: primaryColor,
             }
         },
         nextRoundButton: {
@@ -143,7 +144,30 @@ const defaultTheme = {
                 font: 30,
                 padding: 20,
             }
+        },
+        winner: {
+            color: {
+                background: primaryColor,
+                text: swatches.white,
+            },
+            sizes: {
+                font: 20,
+                marginTop: 10,
+            }
+        },
+        guessCard: {
+            size: {
+                width: '45%',
+                margin: '2%',
+            }
+        },
+        infoCard: {
+            color: {
+                correct: swatches.greenYellow,
+                wrong: swatches.pomegranate,
+            }
         }
+        
     },
 }
 

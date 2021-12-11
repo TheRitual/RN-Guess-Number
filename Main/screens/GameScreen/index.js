@@ -4,6 +4,7 @@ import Card from '../../common/components/Card';
 import CustomButton from '../../common/components/CustomButton';
 import Input from '../../common/components/Input';
 import NumberContainer from '../../common/components/NumberContainer';
+import { GAME_STATUS, GUESS_STATUS } from './consts';
 import generateRandomBetween from './generateRandomBetween';
 import styles from './styles';
 
@@ -15,7 +16,7 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
     const [round, setRound] = useState(1);
     const [isPlayerGuessing, setIsPlayerGuessing] = useState(true);
     const [inputValue, setInputValue] = useState("");
-    const [guessStatus, setGuessStatus] = useState({ player: "?", computer: "?" })
+    const [guessStatus, setGuessStatus] = useState({ player: "", computer: "" })
 
     const setMin = (min) => {
         setComputerMinMax({ min: min, max: computerMinMax.max });
@@ -46,24 +47,24 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
 
         switch (true) {
             case selected > computersNumber:
-                playerStatus = "TOO HIGH!"; break;
+                playerStatus = GUESS_STATUS.LOWER; break;
             case selected < computersNumber:
-                playerStatus = "TOO LOW!"; break;
+                playerStatus = GUESS_STATUS.HIGHER; break;
             case selected === computersNumber:
-                playerStatus = "CORRECT!"; break;
+                playerStatus = GUESS_STATUS.EQUAL; break;
         }
 
         switch (true) {
             case computerSelected > playersNumber:
-                computerStatus = "TOO HIGH!";
+                computerStatus = GUESS_STATUS.LOWER;
                 setMax(computerSelected - 1);
                 break;
             case computerSelected < playersNumber:
-                computerStatus = "TOO LOW!";
+                computerStatus = GUESS_STATUS.HIGHER;
                 setMin(computerSelected + 1);
                 break;
             case computerSelected === playersNumber:
-                computerStatus = "CORRECT!"; break;
+                computerStatus = GUESS_STATUS.EQUAL; break;
         }
 
         setGuessStatus({ player: playerStatus, computer: computerStatus });
@@ -84,21 +85,21 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
     }
 
     const getGameStatus = () => {
-        if (guessStatus.player !== "CORRECT!" && guessStatus.computer !== "CORRECT!") {
-            return "ONGOING";
+        if (guessStatus.player !== GUESS_STATUS.EQUAL && guessStatus.computer !== GUESS_STATUS.EQUAL) {
+            return GAME_STATUS.ON_GOING;
         }
-        if (guessStatus.player === "CORRECT!" && guessStatus.computer === "CORRECT!") {
-            return "DRAW";
+        if (guessStatus.player === GUESS_STATUS.EQUAL && guessStatus.computer === GUESS_STATUS.EQUAL) {
+            return GAME_STATUS.DRAW;
         }
-        if (guessStatus.computer === "CORRECT!") {
-            return "COMPUTER WON!";
+        if (guessStatus.computer === GUESS_STATUS.EQUAL) {
+            return GAME_STATUS.COMPUTER_WON;
         }
-        return "PLAYER WON!";
+        return GAME_STATUS.PLAYER_WON;
     }
 
     const getBigButton = () => {
         console.log(getGameStatus());
-        if (getGameStatus() === "ONGOING") {
+        if (getGameStatus() === GAME_STATUS.ON_GOING) {
             return (
                 <>
                     <Card style={styles.nextRoundCard}>
@@ -155,10 +156,10 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
             <Text style={styles.roundText}>ROUND {round}</Text>
 
             <View style={styles.guessCardsContainer}>
-                <Card style={styles.guessCard}>
+                <Card style={styles.playerNameCard}>
                     <Text style={styles.playerName}>YOU</Text>
                 </Card>
-                <Card style={styles.guessCard}>
+                <Card style={styles.playerNameCard}>
                     <Text style={styles.playerName}>COMPUTER</Text>
                 </Card>
             </View>
@@ -175,11 +176,11 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
             </View>
 
             <View style={styles.guessCardsContainer}>
-                <Card style={styles.guessCard}>
+                <Card style={guessStatus.player === GUESS_STATUS.EQUAL ? styles.correctCard : styles.wrongCard}>
                     <Text style={styles.info}>Number is:</Text>
                     <Text style={styles.tip}>{guessStatus.player}</Text>
                 </Card>
-                <Card style={styles.guessCard}>
+                <Card style={guessStatus.computer === GUESS_STATUS.EQUAL ? styles.correctCard : styles.wrongCard}>
                     <Text style={styles.info}>Number is:</Text>
                     <Text style={styles.tip}>{guessStatus.computer}</Text>
                 </Card>

@@ -3,6 +3,8 @@ const swatches = {
     electricViolet: "#C717FC",
     grey: "#898989",
     violetRed: "#f7287b",
+    greenYellow: "#96f728",
+    pomegranate: "#fc4949",
     white: "#FFFFFF",
 }
 
