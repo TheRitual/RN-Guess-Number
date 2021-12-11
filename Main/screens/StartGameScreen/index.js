@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Keyboard, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Alert, Keyboard, Text, TouchableWithoutFeedback, View, Image } from 'react-native';
 import Card from '../../common/components/Card';
 import CustomButton from '../../common/components/CustomButton';
 import Input from '../../common/components/Input';
@@ -61,6 +61,7 @@ const StartGameScreen = ({ onStartGame }) => {
                         <CustomButton onPress={confirmInputHandler} style={styles.button} title="Confirm" />
                     </View>
                 </Card>
+                <Image resizeMode='contain' style={styles.logo} source={require('../../../assets/logo.png')} />
                 {confirmed &&
                     <Card style={styles.selectedNumberCard}>
                         <Text style={styles.info}>You Selected:</Text>

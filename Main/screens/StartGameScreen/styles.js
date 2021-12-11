@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { View } from "react-native-web";
 import theme from "../../common/themes/default";
 
 const styles = StyleSheet.create({
@@ -51,6 +52,10 @@ const styles = StyleSheet.create({
         fontSize: theme.info.size.font,
         textAlign: 'center',
     },
+    logo: {
+        width: 200,
+        height: 200,
+    }
 });
 
 export default styles;
