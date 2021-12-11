@@ -70,8 +70,8 @@ const defaultTheme = {
     },
     numberInput: {
         color: {
-            border: accentColor,
-            number: accentColor,
+            backgroundColor: accentColor,
+            number: swatches.white,
         },
         params: {
             alignItems: 'center',
@@ -79,12 +79,13 @@ const defaultTheme = {
         },
         size: {
             border: {
-                radius: 10,
+                radius: 50,
                 width: 2,
             },
             font: 25,
             marginVertical: 10,
-            padding: 10,
+            padding: 15,
+            size: 70,
         },
     },
     startGameButton: {
@@ -113,7 +114,9 @@ const defaultTheme = {
                     background: primaryColor,
                 },
                 size: {
-                    marginTop: 20,
+                    marginTop: 30,
+                    font: 30,
+                    padding: 20,
                 }
             }
         },
@@ -167,7 +170,7 @@ const defaultTheme = {
                 wrong: swatches.pomegranate,
             }
         }
-        
+
     },
 }
 

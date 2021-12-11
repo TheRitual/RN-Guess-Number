@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import { Modal, Text, View } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Alert, Modal, Text, View } from 'react-native';
 import Card from '../../common/components/Card';
-import CustomButton from '../../common/components/CustomButton';
 import Input from '../../common/components/Input';
+import CustomButton from '../../common/components/CustomButton';
 import NumberContainer from '../../common/components/NumberContainer';
 import { GAME_STATUS, GUESS_STATUS } from './consts';
 import generateRandomBetween from './generateRandomBetween';
 import styles from './styles';
 
 const GameScreen = ({ onStopGame, playersNumber }) => {
+    let inputRef = useRef(null);
     const [computersGuess, setComputersGuess] = useState(null);
     const [computersNumber, setComputerNumber] = useState(generateRandomBetween(0, 99));
     const [computerMinMax, setComputerMinMax] = useState({ min: 0, max: 99 });
@@ -34,7 +35,7 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
             Alert.alert(
                 "Invalid Number!",
                 "Number has to be a number between 0 and 99",
-                [{ text: "Okay!", style: 'destructive', onPress: resetInputHandler }]
+                [{ text: "Okay!", style: 'destructive', onPress: () => setInputValue("") }]
             );
             return;
         }
@@ -79,7 +80,7 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
     const nextRoundHandler = () => {
         setInputValue("");
         setRound(round + 1);
-        setComputerNumber(generateRandomBetween(computerMinMax.min, computerMinMax.max));
+        setComputersGuess(generateRandomBetween(computerMinMax.min, computerMinMax.max));
         setPlayersGuess(null);
         setIsPlayerGuessing(true);
     }
@@ -98,7 +99,6 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
     }
 
     const getBigButton = () => {
-        console.log(getGameStatus());
         if (getGameStatus() === GAME_STATUS.ON_GOING) {
             return (
                 <>
@@ -135,12 +135,11 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
 
     return (
         <View style={styles.container}>
-            <Modal visible={isPlayerGuessing}>
+            <Modal visible={isPlayerGuessing} onShow={() => inputRef.current.focus()}>
                 <Card style={styles.guess}>
                     <Text style={styles.roundText}>ROUND {round}</Text>
                     <Text style={styles.info}>Your Guess:</Text>
                     <Input
-                        autoFocus
                         caretHidden
                         blurOnSubmit
                         keyboardType="numeric"
@@ -148,8 +147,14 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
                         style={styles.guessInput}
                         value={inputValue}
                         onChangeText={changeGuessValueHandler}
+                        ref={inputRef}
                     />
-                    <CustomButton onPress={guessHandler} style={styles.guessButton}> Guess! </CustomButton>
+                    <CustomButton
+                        onPress={guessHandler}
+                        textStyle={styles.guessButtonText}
+                        style={styles.guessButton}>
+                        Guess!
+                    </CustomButton>
                 </Card>
             </Modal>
 
@@ -177,11 +182,9 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
 
             <View style={styles.guessCardsContainer}>
                 <Card style={guessStatus.player === GUESS_STATUS.EQUAL ? styles.correctCard : styles.wrongCard}>
-                    <Text style={styles.info}>Number is:</Text>
                     <Text style={styles.tip}>{guessStatus.player}</Text>
                 </Card>
                 <Card style={guessStatus.computer === GUESS_STATUS.EQUAL ? styles.correctCard : styles.wrongCard}>
-                    <Text style={styles.info}>Number is:</Text>
                     <Text style={styles.tip}>{guessStatus.computer}</Text>
                 </Card>
             </View>

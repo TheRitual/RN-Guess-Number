@@ -3,13 +3,14 @@ import theme from "../../themes/default";
 
 const styles = StyleSheet.create({
     container: {
-        borderColor: theme.numberInput.color.border,
-        borderWidth: theme.numberInput.size.border.width,
+        backgroundColor: theme.numberInput.color.backgroundColor,
         borderRadius: theme.numberInput.size.border.radius,
         marginVertical: theme.numberInput.size.marginVertical,
         padding: theme.numberInput.size.padding,
         alignItems: theme.numberInput.params.alignItems,
         justifyContent: theme.numberInput.params.justifyContent,
+        width: theme.numberInput.size.size,
+        height: theme.numberInput.size.size,
     },
     number: {
         color: theme.numberInput.color.number,

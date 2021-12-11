@@ -23,7 +23,12 @@ const styles = StyleSheet.create({
     },
     guessButton: {
         backgroundColor: theme.gameScreen.guess.button.color.background,
+        padding: theme.gameScreen.guess.button.size.padding,
         marginTop: theme.gameScreen.guess.button.size.marginTop,
+    },
+    guessButtonText: {
+        fontSize: theme.gameScreen.guess.button.size.font,
+        paddingTop: theme.gameScreen.guess.button.size.font / 2,
     },
     roundText: {
         fontSize: theme.gameScreen.roundText.size.font,
@@ -45,7 +50,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     tip: {
-        fontSize: 20,
+        fontSize: 50,
     },
     playerNameCard: {
         width: theme.gameScreen.guessCard.size.width,
