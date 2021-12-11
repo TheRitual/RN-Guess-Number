@@ -11,11 +11,20 @@ const Main = () => {
     const startGameHandler = selectedNumber => {
         setUserNumber(selectedNumber);
     }
+    
+    const stopGameHandler = () => {
+        setUserNumber(null);
+    }
+
+    const content = userNumber ?
+        <GameScreen userNumber={userNumber} onStopGame={stopGameHandler} />
+        :
+        <StartGameScreen onStartGame={startGameHandler} />;
 
     return (
         <View style={styles.screen}>
             <Header title="Guess a Number" />
-            {userNumber ? <GameScreen /> : <StartGameScreen onStartGame={startGameHandler} />}
+            {content}
         </View>
     );
 }
