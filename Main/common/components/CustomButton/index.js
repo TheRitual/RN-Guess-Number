@@ -4,7 +4,7 @@ import styles from './styles';
 
 const CustomButton = props => {
     return (
-        <TouchableOpacity onPress={props.onPress}>
+        <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
             <View style={{ ...styles.button, ...props.style }}>
                 <Text {...props} style={{ ...styles.text, ...props.textStyle }} >
                     {props.title || props.children || "?"}

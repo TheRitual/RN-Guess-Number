@@ -135,27 +135,29 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
 
     return (
         <View style={styles.container}>
-            <Modal visible={isPlayerGuessing} onShow={() => inputRef.current.focus()}>
-                <Card style={styles.guess}>
-                    <Text style={styles.roundText}>ROUND {round}</Text>
-                    <Text style={styles.info}>Your Guess:</Text>
-                    <Input
-                        caretHidden
-                        blurOnSubmit
-                        keyboardType="numeric"
-                        maxLength={2}
-                        style={styles.guessInput}
-                        value={inputValue}
-                        onChangeText={changeGuessValueHandler}
-                        ref={inputRef}
-                    />
-                    <CustomButton
-                        onPress={guessHandler}
-                        textStyle={styles.guessButtonText}
-                        style={styles.guessButton}>
-                        Guess!
-                    </CustomButton>
-                </Card>
+            <Modal transparent={true} animationType="fade" visible={isPlayerGuessing} onShow={() => inputRef.current.focus()}>
+                <View style={styles.guessContainer}>
+                    <Card style={styles.guess}>
+                        <Text style={styles.roundText}>ROUND {round}</Text>
+                        <Text style={styles.info}>Your Guess:</Text>
+                        <Input
+                            caretHidden
+                            blurOnSubmit
+                            keyboardType="numeric"
+                            maxLength={2}
+                            style={styles.guessInput}
+                            value={inputValue}
+                            onChangeText={changeGuessValueHandler}
+                            ref={inputRef}
+                        />
+                        <CustomButton
+                            onPress={guessHandler}
+                            textStyle={styles.guessButtonText}
+                            style={styles.guessButton}>
+                            Guess!
+                        </CustomButton>
+                    </Card>
+                </View>
             </Modal>
 
             <Text style={styles.roundText}>ROUND {round}</Text>

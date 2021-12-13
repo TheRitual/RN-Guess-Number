@@ -13,7 +13,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '90%',
-        height: '90%',
+    },
+    guessContainer: {
+        height: '100%',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0,0,0,0.7)',
+        
     },
     guessInput: {
         textAlign: 'center',
