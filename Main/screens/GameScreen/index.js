@@ -3,11 +3,11 @@ import { Alert, Text, View } from 'react-native';
 import Card from '../../common/components/Card';
 import { GAME_STATUS, GUESS_STATUS } from './consts';
 import generateRandomBetween from './generateRandomBetween';
-import { MaterialIcons } from '@expo/vector-icons';
 import styles from './styles';
 import GuessCards from './GuessCards';
 import BigButton from './BigButton';
 import GuessInputCard from './GuessInputCard';
+import PlayerNamesCards from './PlayerNamesCards';
 
 
 const GameScreen = ({ onStopGame, playersNumber }) => {
@@ -30,7 +30,6 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
 
     const guessHandler = () => {
         const selected = parseInt(inputValue);
-        const computerSelected = generateRandomBetween(computerMinMax.min, computerMinMax.max);
 
         if (isNaN(selected) || selected < 0 || selected > 99) {
             Alert.alert(
@@ -42,6 +41,7 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
         }
 
         setPlayersGuess(selected);
+        const computerSelected = generateRandomBetween(computerMinMax.min, computerMinMax.max);
         setComputersGuess(computerSelected);
 
         let playerStatus = "";
@@ -102,24 +102,11 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
                 inputValue={inputValue}
                 guessHandler={guessHandler}
                 round={round}
-                onInputChange={setInputValue}/>
+                onInputChange={setInputValue} />
 
             <Text style={styles.roundText}>ROUND {round}</Text>
 
-            <View style={styles.guessCardsContainer}>
-                <Card style={styles.playerNameCard}>
-                    <Text style={styles.playerName}>
-                        <MaterialIcons name="face" size={40} color="white" />
-                    </Text>
-                    <Text style={styles.playerName}>({getGameStatus() !== GAME_STATUS.ON_GOING ? computersNumber : '???'})</Text>
-                </Card>
-                <Card style={styles.playerNameCard}>
-                    <Text style={styles.playerName}>
-                        <MaterialIcons name="computer" size={40} color="white" />
-                    </Text>
-                    <Text style={styles.playerName}>({playersNumber})</Text>
-                </Card>
-            </View>
+            <PlayerNamesCards getGameStatus={getGameStatus} computersNumber={computersNumber} playersNumber={playersNumber} />
 
             <GuessCards playersGuess={playersGuess} computersGuess={computersGuess} />
 
