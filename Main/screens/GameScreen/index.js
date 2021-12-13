@@ -1,18 +1,16 @@
-import React, { useRef, useState } from 'react';
-import { Alert, Modal, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Alert, Text, View } from 'react-native';
 import Card from '../../common/components/Card';
-import Input from '../../common/components/Input';
-import CustomButton from '../../common/components/CustomButton';
 import { GAME_STATUS, GUESS_STATUS } from './consts';
 import generateRandomBetween from './generateRandomBetween';
 import { MaterialIcons } from '@expo/vector-icons';
 import styles from './styles';
 import GuessCards from './GuessCards';
 import BigButton from './BigButton';
+import GuessInputCard from './GuessInputCard';
 
 
 const GameScreen = ({ onStopGame, playersNumber }) => {
-    let inputRef = useRef(null);
     const [computersGuess, setComputersGuess] = useState(null);
     const [computersNumber, setComputerNumber] = useState(generateRandomBetween(0, 99));
     const [computerMinMax, setComputerMinMax] = useState({ min: 0, max: 99 });
@@ -76,10 +74,6 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
         setIsPlayerGuessing(false);
     }
 
-    const changeGuessValueHandler = val => {
-        setInputValue(val);
-    }
-
     const nextRoundHandler = () => {
         setInputValue("");
         setRound(round + 1);
@@ -103,30 +97,12 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
 
     return (
         <View style={styles.container}>
-            <Modal transparent={true} animationType="fade" visible={isPlayerGuessing} onShow={() => inputRef.current.focus()}>
-                <View style={styles.guessContainer}>
-                    <Card style={styles.guess}>
-                        <Text style={styles.roundText}>ROUND {round}</Text>
-                        <Text style={styles.info}>Your Guess:</Text>
-                        <Input
-                            caretHidden
-                            blurOnSubmit
-                            keyboardType="numeric"
-                            maxLength={2}
-                            style={styles.guessInput}
-                            value={inputValue}
-                            onChangeText={changeGuessValueHandler}
-                            ref={inputRef}
-                        />
-                        <CustomButton
-                            onPress={guessHandler}
-                            textStyle={styles.guessButtonText}
-                            style={styles.guessButton}>
-                            Guess!
-                        </CustomButton>
-                    </Card>
-                </View>
-            </Modal>
+            <GuessInputCard
+                visible={isPlayerGuessing}
+                inputValue={inputValue}
+                guessHandler={guessHandler}
+                round={round}
+                onInputChange={setInputValue}/>
 
             <Text style={styles.roundText}>ROUND {round}</Text>
 
