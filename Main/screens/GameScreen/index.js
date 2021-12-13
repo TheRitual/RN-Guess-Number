@@ -8,6 +8,7 @@ import GuessCards from './GuessCards';
 import BigButton from './BigButton';
 import GuessInputCard from './GuessInputCard';
 import PlayerNamesCards from './PlayerNamesCards';
+import Tips from './Tips';
 
 
 const GameScreen = ({ onStopGame, playersNumber }) => {
@@ -110,14 +111,7 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
 
             <GuessCards playersGuess={playersGuess} computersGuess={computersGuess} />
 
-            <View style={styles.guessCardsContainer}>
-                <Card style={guessStatus.player === GUESS_STATUS.EQUAL ? styles.correctCard : styles.wrongCard}>
-                    <Text style={styles.tip}>{guessStatus.player}</Text>
-                </Card>
-                <Card style={guessStatus.computer === GUESS_STATUS.EQUAL ? styles.correctCard : styles.wrongCard}>
-                    <Text style={styles.tip}>{guessStatus.computer}</Text>
-                </Card>
-            </View>
+            <Tips guessStatus={guessStatus} />
 
             <BigButton nextRoundHandler={nextRoundHandler} gameStatus={getGameStatus()} onStopGame={onStopGame} />
 
