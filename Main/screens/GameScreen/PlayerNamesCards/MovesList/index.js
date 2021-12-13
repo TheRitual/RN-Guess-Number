@@ -11,7 +11,7 @@ const MovesList = ({ title, moves, visible, onClose }) => {
                 <Card style={styles.card}>
                     {title && <Text style={styles.title}>{title}</Text>}
                     <View style={styles.listContainer}>
-                        <FlatList keyExtractor={item => item} data={moves} renderItem={({ item, index, separators }) => {
+                        <FlatList keyExtractor={item => item} data={moves} renderItem={({ item, index }) => {
                             return (
                                 <View style={styles.listItem}>
                                     <Text style={styles.listText}>{moves.length - index}</Text>
