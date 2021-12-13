@@ -1,8 +1,11 @@
+import React from 'react';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import styles from './styles';
 
 export const GUESS_STATUS = {
-    LOWER : "▼",
-    HIGHER : "▲",
-    EQUAL : "✓",
+    LOWER: <MaterialCommunityIcons size={styles.tip.fontSize} name="arrow-down-bold-circle" color="black" />,
+    HIGHER: <MaterialCommunityIcons size={styles.tip.fontSize} name="arrow-up-bold-circle" color="black" />,
+    EQUAL: <MaterialCommunityIcons size={styles.tip.fontSize} name="cake" color="black" />,
 }
 
 export const GAME_STATUS = {

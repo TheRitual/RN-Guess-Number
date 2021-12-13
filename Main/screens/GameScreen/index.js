@@ -3,10 +3,13 @@ import { Alert, Modal, Text, View } from 'react-native';
 import Card from '../../common/components/Card';
 import Input from '../../common/components/Input';
 import CustomButton from '../../common/components/CustomButton';
-import NumberContainer from '../../common/components/NumberContainer';
 import { GAME_STATUS, GUESS_STATUS } from './consts';
 import generateRandomBetween from './generateRandomBetween';
+import { MaterialIcons } from '@expo/vector-icons';
 import styles from './styles';
+import GuessCards from './GuessCards';
+import BigButton from './BigButton';
+
 
 const GameScreen = ({ onStopGame, playersNumber }) => {
     let inputRef = useRef(null);
@@ -98,41 +101,6 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
         return GAME_STATUS.PLAYER_WON;
     }
 
-    const getBigButton = () => {
-        if (getGameStatus() === GAME_STATUS.ON_GOING) {
-            return (
-                <>
-                    <Card style={styles.nextRoundCard}>
-                        <CustomButton
-                            textStyle={styles.nextRoundButtonText}
-                            style={styles.nextRoundButton}
-                            onPress={nextRoundHandler}>
-                            Next Round!
-                        </CustomButton>
-                    </Card>
-                    <Card>
-                        <CustomButton onPress={onStopGame}>Quit Game</CustomButton>
-                    </Card>
-                </>
-            );
-        }
-        return (
-            <>
-                <Card style={styles.winnerCard}>
-                    <Text style={styles.winner}>{getGameStatus()}</Text>
-                </Card>
-                <Card style={styles.nextRoundCard}>
-                    <CustomButton
-                        textStyle={styles.nextRoundButtonText}
-                        style={styles.nextRoundButton}
-                        onPress={onStopGame}>
-                        Start New Game
-                    </CustomButton>
-                </Card>
-            </>
-        );
-    }
-
     return (
         <View style={styles.container}>
             <Modal transparent={true} animationType="fade" visible={isPlayerGuessing} onShow={() => inputRef.current.focus()}>
@@ -164,28 +132,20 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
 
             <View style={styles.guessCardsContainer}>
                 <Card style={styles.playerNameCard}>
-                    <Text style={styles.playerName}>YOU</Text>
+                    <Text style={styles.playerName}>
+                        <MaterialIcons name="face" size={40} color="white" />
+                    </Text>
                     <Text style={styles.playerName}>({getGameStatus() !== GAME_STATUS.ON_GOING ? computersNumber : '???'})</Text>
-
                 </Card>
                 <Card style={styles.playerNameCard}>
-                    <Text style={styles.playerName}>COMPUTER</Text>
+                    <Text style={styles.playerName}>
+                        <MaterialIcons name="computer" size={40} color="white" />
+                    </Text>
                     <Text style={styles.playerName}>({playersNumber})</Text>
-
-
                 </Card>
             </View>
 
-            <View style={styles.guessCardsContainer}>
-                <Card style={styles.guessCard}>
-                    <Text style={styles.info}>Guess:</Text>
-                    <NumberContainer>{playersGuess}</NumberContainer>
-                </Card>
-                <Card style={styles.guessCard}>
-                    <Text style={styles.info}>Guess:</Text>
-                    <NumberContainer>{computersGuess}</NumberContainer>
-                </Card>
-            </View>
+            <GuessCards playersGuess={playersGuess} computersGuess={computersGuess} />
 
             <View style={styles.guessCardsContainer}>
                 <Card style={guessStatus.player === GUESS_STATUS.EQUAL ? styles.correctCard : styles.wrongCard}>
@@ -196,7 +156,7 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
                 </Card>
             </View>
 
-            {getBigButton()}
+            <BigButton nextRoundHandler={nextRoundHandler} gameStatus={getGameStatus()} onStopGame={onStopGame} />
 
         </View>
     );
