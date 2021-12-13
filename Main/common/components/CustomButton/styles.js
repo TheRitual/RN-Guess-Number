@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import theme from "../../themes/default";
 
 const styles = StyleSheet.create({
     button: {
@@ -7,7 +8,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 4,
         elevation: 1,
-        backgroundColor: 'blue',
+        backgroundColor: theme.default.button.backgroundColor,
       },
       text: {
         fontSize: 16,

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Alert, Text, View } from 'react-native';
-import Card from '../../common/components/Card';
 import { GAME_STATUS, GUESS_STATUS } from './consts';
 import generateRandomBetween from './generateRandomBetween';
 import styles from './styles';
@@ -20,6 +19,8 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
     const [isPlayerGuessing, setIsPlayerGuessing] = useState(true);
     const [inputValue, setInputValue] = useState("");
     const [guessStatus, setGuessStatus] = useState({ player: "", computer: "" })
+    const [playerMoves, setPlayerMoves] = useState([]);
+    const [computerMoves, setComputerMoves] = useState([]);
 
     const setMin = (min) => {
         setComputerMinMax({ min: min, max: computerMinMax.max });
@@ -71,7 +72,8 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
         }
 
         setGuessStatus({ player: playerStatus, computer: computerStatus });
-
+        setComputerMoves([computerSelected, ...computerMoves]);
+        setPlayerMoves([selected, ...playerMoves]);
         setIsPlayerGuessing(false);
     }
 
@@ -101,13 +103,13 @@ const GameScreen = ({ onStopGame, playersNumber }) => {
             <GuessInputCard
                 visible={isPlayerGuessing}
                 inputValue={inputValue}
-                guessHandler={guessHandler}
+                onGuess={guessHandler}
                 round={round}
                 onInputChange={setInputValue} />
 
             <Text style={styles.roundText}>ROUND {round}</Text>
 
-            <PlayerNamesCards getGameStatus={getGameStatus} computersNumber={computersNumber} playersNumber={playersNumber} />
+            <PlayerNamesCards getGameStatus={getGameStatus} playerMoves={playerMoves} computerMoves={computerMoves} computersNumber={computersNumber} playersNumber={playersNumber} />
 
             <GuessCards playersGuess={playersGuess} computersGuess={computersGuess} />
 

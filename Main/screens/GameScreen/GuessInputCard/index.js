@@ -5,7 +5,7 @@ import CustomButton from '../../../common/components/CustomButton';
 import Input from '../../../common/components/Input';
 import styles from '../styles';
 
-const GuessInputCard = ({ visible, inputValue, guessHandler, round, onInputChange }) => {
+const GuessInputCard = ({ visible, inputValue, onGuess, round, onInputChange }) => {
     const inputRef = useRef(null);
 
     return (
@@ -25,7 +25,7 @@ const GuessInputCard = ({ visible, inputValue, guessHandler, round, onInputChang
                         ref={inputRef}
                     />
                     <CustomButton
-                        onPress={guessHandler}
+                        onPress={onGuess}
                         textStyle={styles.guessButtonText}
                         style={styles.guessButton}>
                         Guess!
