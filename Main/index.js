@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { ScrollView, View, KeyboardAvoidingView } from 'react-native';
 import Header from './Header';
 import GameScreen from './screens/GameScreen';
 import StartGameScreen from './screens/StartGameScreen';
@@ -11,7 +11,7 @@ const Main = () => {
     const startGameHandler = selectedNumber => {
         setUserNumber(selectedNumber);
     }
-    
+
     const stopGameHandler = () => {
         setUserNumber(null);
     }
@@ -22,10 +22,12 @@ const Main = () => {
         <StartGameScreen onStartGame={startGameHandler} />;
 
     return (
-        <View style={styles.screen}>
-            <Header title="Guess a Number" />
-            {content}
-        </View>
+        <ScrollView>
+            <View style={styles.screen}>
+                <Header title="Guess a Number" />
+                    {content}
+            </View>
+        </ScrollView>
     );
 }
 

@@ -3,6 +3,7 @@ import theme from "../common/themes/default";
 
 const styles = StyleSheet.create({
     header: {
+        flex: 1,
         width: '100%',
         height: theme.header.size.height,
         paddingTop: theme.header.size.paddingTop,
